@@ -8,25 +8,13 @@ import {
     Dimensions,
     Text,
     TouchableOpacity,
+    Navigator,
     View,
     Image
 } from 'react-native';
 
-const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
-    },
-    scroll: {
-    },
-    page: {
-        backgroundColor: '#eee',
-        flex: 1,
-        alignSelf: 'stretch',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: Dimensions.get('window').width
-    }
-});
+import Homepage from './view/homepage';
+import Route from './route';
 
 class App extends React.Component {
 
@@ -36,55 +24,21 @@ class App extends React.Component {
             Xponit: 0
         }
     }
-
-    _onScroll (evt, _view) {
-        console.log(evt._view);
-        console.log(evt.nativeEvent);
-        const nativeEvent = evt.nativeEvent;
-        this.setState({
-            Xponit: nativeEvent.contentOffset.x
-        });
-    }
-
-    _onPress (evt) {
-        console.log()
+    
+    _renderScene (route, navigator) {
+        console.log(route);
+        return (
+            <Homepage title={route.title} route={route} navigator={navigator}/>
+        );
     }
 
     render () {
         return (
-            <View style={styles.wrapper}>
-                <View style={{backgroundColor: '#eee'}}><Text>this is a scroll, X: {this.state.Xponit}</Text></View>
-                <ScrollView 
-                    horizontal={true}
-                    onScroll={this._onScroll.bind(this)}
-                    scrollEventThrottle={1000}
-                    pagingEnabled={true}
-                    showsHorizontalScrollIndicator={false}
-                    style={styles.scroll}
-                >
-                    <View style={[styles.page, {backgroundColor: '#aee'}]}>
-                        <TouchableOpacity>
-                            <Text>
-                                page1 haha
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={[styles.page, {backgroundColor: '#eae'}]}>
-                        <TouchableOpacity>
-                            <Text>
-                            page2
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={[styles.page, {backgroundColor: '#eea'}]}>
-                        <TouchableOpacity>
-                            <Text>
-                                page3
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                </ScrollView>
-            </View>
+            <Navigator
+                initialRoute={Route[0]}
+                initialRouteStack={Route}
+                renderScene={(route, navigator) => <Homepage route={route} navigator={navigator}/>}
+            />
         );
     }
 
