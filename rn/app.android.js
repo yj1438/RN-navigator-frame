@@ -56,7 +56,7 @@ class App extends React.Component {
                 <View style={{backgroundColor: '#eee'}}><Text>this is a scroll, X: {this.state.Xponit}</Text></View>
                 <ScrollView 
                     horizontal={true}
-                    onScroll={this._onScroll}
+                    onScroll={this._onScroll.bind(this)}
                     scrollEventThrottle={1000}
                     pagingEnabled={true}
                     showsHorizontalScrollIndicator={false}
