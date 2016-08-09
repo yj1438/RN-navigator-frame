@@ -32,7 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected String getJSMainModuleName() {
-      return "rn/app.android";
+      return "rn/app";
     }
 //    @Override
 //    protected @Nullable String getJSBundleFile() {

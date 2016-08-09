@@ -82,6 +82,15 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+allprojects {
+    repositories {
+        maven {
+            // All of React Native (JS, Android binaries) is installed from npm
+            url "../../node_modules/react-native/android"
+        }
+    }
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -96,14 +105,14 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
-    signingConfigs {
-        release {
-            storeFile file(MYAPP_RELEASE_STORE_FILE)
-            storePassword MYAPP_RELEASE_STORE_PASSWORD
-            keyAlias MYAPP_RELEASE_KEY_ALIAS
-            keyPassword MYAPP_RELEASE_KEY_PASSWORD
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file(MYAPP_RELEASE_STORE_FILE)
+//            storePassword MYAPP_RELEASE_STORE_PASSWORD
+//            keyAlias MYAPP_RELEASE_KEY_ALIAS
+//            keyPassword MYAPP_RELEASE_KEY_PASSWORD
+//        }
+//    }
     splits {
         abi {
             reset()
@@ -116,7 +125,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -124,7 +133,7 @@ android {
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a":1, "x86":2]
+            def versionCodes = ["armeabi-v7a":1]
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
@@ -133,6 +142,7 @@ android {
         }
     }
 }
+
 
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
