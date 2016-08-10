@@ -7,8 +7,8 @@ import {
     BackAndroid
 } from 'react-native';
 
-import Homepage from './view/homepage.jsx';
-import Index from './view/index.jsx';
+import Homepage from './view/homepage/homepage.jsx';
+import Index from './view/index/index.jsx';
 import Route from './route';
 
 class App extends React.Component {
