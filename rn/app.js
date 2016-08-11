@@ -7,14 +7,13 @@ import {
     BackAndroid
 } from 'react-native';
 
-import Homepage from './view/homepage/homepage.jsx';
-import Index from './view/index/index.jsx';
 import Route from './route';
 
 class App extends React.Component {
 
     constructor (props) {
         super(props);
+        this.route = null;
         BackAndroid.addEventListener('hardwareBackPress', () => {
             if (route.index === 0) {
                 navigator.push(Route[0]);
@@ -24,15 +23,8 @@ class App extends React.Component {
         });
     }
 
-    _renderScene (route, navigator) {
-        switch (route.id) {
-            case 'homepage':
-                return <Homepage navigator={navigator}/>;
-            case 'index':
-                return <Index navigator={navigator} {...route.params}/>;
-            default:
-                break;
-        }
+    _renderRoute (route, navigator) {
+        return Route.getRoutePage(route, navigator);
     }
 
     render () {
@@ -40,11 +32,10 @@ class App extends React.Component {
             <Navigator
                 initialRoute={{
                     id: 'homepage',
-                    index: 1,
-                    title: 'homepage'
+                    params: {}
                 }}
                 // initialRouteStack={Route}
-                renderScene={this._renderScene.bind(this)}
+                renderScene={this._renderRoute.bind(this)}
                 configureScene={(route, routeStack) =>
                     // Navigator.SceneConfigs.FloatFromBottom
                     Navigator.SceneConfigs.FloatFromRight

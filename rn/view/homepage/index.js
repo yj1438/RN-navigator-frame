@@ -10,20 +10,14 @@ import {
     Dimensions
 } from 'react-native';
 
+import List from './list';
+
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         backgroundColor: 'red'
     },
     scroll: {
-    },
-    page: {
-        backgroundColor: '#eee',
-        flex: 1,
-        alignSelf: 'stretch',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: Dimensions.get('window').width
     },
     button: {
         height: 20,
@@ -51,13 +45,10 @@ class Homepage extends React.Component {
     _onPress (evt) {
         this.props.navigator.push({
             id: 'index',
-            index: 1,
-            title: 'index',
             params: {desc: 'this is indexpage from Homepage!'}
         });
     }
-
-
+    
     render () {
         return (
             <View style={styles.wrapper}>
@@ -70,32 +61,21 @@ class Homepage extends React.Component {
                     showsHorizontalScrollIndicator={false}
                     style={styles.scroll}
                 >
-                    <View style={[styles.page, {backgroundColor: '#aee'}]}>
-                        <TouchableOpacity>
-                            <Text>
-                                page1 haha
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={[styles.page, {backgroundColor: '#eae'}]}>
-                        <TouchableOpacity>
-                            <Text>
-                            page2
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={[styles.page, {backgroundColor: '#eea'}]}>
-                        <TouchableOpacity onPress={this._onPress.bind(this)} style={styles.button}>
-                            <Text style={{borderWidth: 1, padding: 10, margin: 10, height: 30}}>
-                                page3
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+                {
+                    ['1','2','3'].map((value, index) => {
+                        return (
+                            <List key={value} cont={value} navigator={this.props.navigator}/>
+                        );
+                    })
+                }
                 </ScrollView>
             </View>
         );
     }
-
 }
+
+Homepage.propTypes = {
+
+};
 
 export default Homepage;
