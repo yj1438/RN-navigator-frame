@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {
-    View
+    View,
+    Text
 } from 'react-native';
 
 class Detail extends Component {
@@ -40,14 +41,17 @@ class Detail extends Component {
     render() {
         return (
             <View>
-                this is detail page.
+                <Text>this is detail page.</Text>
+                <Text>
+                    {new Date(this.props.ts).toLocaleDateString()}
+                </Text>
             </View>
         );
     }
 }
 
 Detail.propTypes = {
-    
+    ts: PropTypes.number.isRequired
 };
 
 export default Detail;

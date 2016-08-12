@@ -23,7 +23,16 @@ class Index extends React.Component {
         });
     }
 
-    _onPress (evt) {
+    _gotoDetail (evt) {
+        this.props.navigator.push({
+            id: 'detail',
+            params: {
+                ts: new Date().getTime()
+            }
+        });
+    }
+
+    _goBack (evt) {
         this.props.navigator.pop();
     }
  
@@ -33,7 +42,10 @@ class Index extends React.Component {
             (<View>
                 <Text>this is page index</Text>
                 <Text>{this.props.desc}</Text>
-                <TouchableOpacity onPress={this._onPress.bind(this)}>
+                <TouchableOpacity onPress={this._gotoDetail.bind(this)}>
+                    <Text>click this to detail page</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this._goBack.bind(this)}>
                     <Text>click this to homepage</Text>
                 </TouchableOpacity>
             </View>)

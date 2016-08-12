@@ -2,10 +2,10 @@
 import React from 'react';
 
 // 引入用到的所有模板
-import Homepage from './view/homepage';
-import Index from './view/index';
-import Detail from './view/detail';
-import Error from './view/error';
+import Homepage from './components/homepage';
+import Index from './components/index';
+import Detail from './components/detail';
+import Error from './components/error';
 
 /*
  * 路由配置项

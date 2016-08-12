@@ -14,6 +14,7 @@ import List from './list';
 
 const styles = StyleSheet.create({
     wrapper: {
+        marginTop: 20,
         flex: 1,
         backgroundColor: 'red'
     },
@@ -42,13 +43,6 @@ class Homepage extends React.Component {
         });
     }
 
-    _onPress (evt) {
-        this.props.navigator.push({
-            id: 'index',
-            params: {desc: 'this is indexpage from Homepage!'}
-        });
-    }
-    
     render () {
         return (
             <View style={styles.wrapper}>
