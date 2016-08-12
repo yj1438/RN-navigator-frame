@@ -1,3 +1,4 @@
+'use strict';
 import React, {Component, PropTypes} from 'react';
 import {
     View,
@@ -27,7 +28,7 @@ class List extends Component {
     _gotoIndex () {
         this.props.navigator.push({
             id: 'index',
-            params: {desc: 'this is indexpage from ' + this.props.cont + '!'}
+            params: {desc: 'this is indexpage from ' + this.props.num + '!'}
         });
     }
 
@@ -36,7 +37,7 @@ class List extends Component {
             <View style={styles.page}>
                 <TouchableOpacity onPress={this._gotoIndex.bind(this)}>
                     <Text>
-                        This is page : {this.props.cont}
+                        This is page : {this.props.num}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -45,7 +46,7 @@ class List extends Component {
 }
 
 List.propTypes = {
-    cont: PropTypes.string.isRequired
+    num: PropTypes.string.isRequired
 }
 
 export default List;

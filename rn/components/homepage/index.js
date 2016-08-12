@@ -6,15 +6,13 @@ import {
     View,
     Text,
     ScrollView,
-    TouchableOpacity,
-    Dimensions
+    TouchableOpacity
 } from 'react-native';
 
 import List from './list';
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginTop: 20,
         flex: 1,
         backgroundColor: 'red'
     },
@@ -58,7 +56,7 @@ class Homepage extends React.Component {
                 {
                     ['1','2','3'].map((value, index) => {
                         return (
-                            <List key={value} cont={value} navigator={this.props.navigator}/>
+                            <List key={value} num={value} navigator={this.props.navigator}/>
                         );
                     })
                 }

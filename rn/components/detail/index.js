@@ -1,7 +1,9 @@
+'use strict';
 import React, {Component, PropTypes} from 'react';
 import {
     View,
-    Text
+    Text,
+    TouchableOpacity
 } from 'react-native';
 
 class Detail extends Component {
@@ -10,32 +12,11 @@ class Detail extends Component {
 
     }
 
-    componentWillMount() {
-        
-    }
-
-    componentDidMount() {
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
-    }
-
-    componentWillUnmount() {
-
+    _gotoPage() {
+        this.props.navigator.push({
+            id: 'nopage',
+            params: {}
+        });
     }
 
     render() {
@@ -45,6 +26,11 @@ class Detail extends Component {
                 <Text>
                     {new Date(this.props.ts).toLocaleDateString()}
                 </Text>
+                <TouchableOpacity onPress={this._gotoPage.bind(this)}>
+                    <Text>
+                        click this to a unretched page!
+                    </Text>
+                </TouchableOpacity>
             </View>
         );
     }

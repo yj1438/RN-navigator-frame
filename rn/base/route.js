@@ -2,14 +2,14 @@
 import React from 'react';
 
 // 引入用到的所有模板
-import Homepage from './components/homepage';
-import Index from './components/index';
-import Detail from './components/detail';
-import Error from './components/error';
+import Homepage from '../components/homepage';
+import Index from '../components/index';
+import Detail from '../components/detail';
+import Error from '../components/error';
 
 /*
  * 路由配置项
- * 可配置默认参数 params ，配合 this.props 的限制可使代码更严谨
+ * 可配置默认参数 props: params ，配合 this.props 的限制可使代码更严谨
  */
 const RouteMap = {
     'homepage': {index: 0, component: Homepage, params: {}},
@@ -58,7 +58,7 @@ class Route {
             Object.assign(params, routeObj.params);
         } else {
             Component = Error;
-            params = {};
+            params = {message: '当前页面没有找到：' + id};
         }
         return <Component navigator={navigator} {...params} />;
     }     

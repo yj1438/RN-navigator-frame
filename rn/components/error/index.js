@@ -1,53 +1,54 @@
+'use strict';
 import React, {Component, PropTypes} from 'react';
 import {
     View,
     Text
 } from 'react-native';
 
-class componentName extends Component {
+class Error extends Component {
     constructor(props) {
         super(props);
     }
 
-    componentWillMount() {
+    // componentWillMount() {
 
-    }
+    // }
 
-    componentDidMount() {
+    // componentDidMount() {
 
-    }
+    // }
 
-    componentWillReceiveProps(nextProps) {
+    // componentWillReceiveProps(nextProps) {
 
-    }
+    // }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    // shouldComponentUpdate(nextProps, nextState) {
 
-    }
+    // }
 
-    componentWillUpdate(nextProps, nextState) {
+    // componentWillUpdate(nextProps, nextState) {
 
-    }
+    // }
 
-    componentDidUpdate(prevProps, prevState) {
+    // componentDidUpdate(prevProps, prevState) {
 
-    }
+    // }
 
-    componentWillUnmount() {
+    // componentWillUnmount() {
 
-    }
+    // }
 
     render() {
         return (
             <View>
-                <Text>页面没有找到...</Text>
+                <Text>{this.props.message}</Text>
             </View>
         );
     }
 }
 
-componentName.propTypes = {
-
+Error.propTypes = {
+    message: PropTypes.string.isRequired
 };
 
-export default componentName;
+export default Error;

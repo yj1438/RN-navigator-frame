@@ -9,19 +9,9 @@ import {
     Text
 } from 'react-native';
 
-import Route from './route';
-
-let NavigatorBarMap = {
-    LeftButton(route, navigator, index, navState) {
-        return (<Text>Cancel</Text>); 
-    },
-    RightButton(route, navigator, index, navState) { 
-        return (<Text>Done</Text>); 
-    },
-    Title(route, navigator, index, navState) {
-        return (<Text>Awesome Nav Bar</Text>); 
-    }
-};
+import Route from './base/route';
+import NavigationBarMap from './base/navigationBar';
+import goBack from './common/goBack';
 
 class App extends React.Component {
 
@@ -31,13 +21,7 @@ class App extends React.Component {
         this.navigator = null;
         //
         BackAndroid.addEventListener('hardwareBackPress', () => {
-            // Alert.alert('alert', this.navigator + this.route.id);
-            if (this.navigator && this.navigator.getCurrentRoutes().length > 1) {
-                this.navigator.pop();
-                return true;
-            }
-            BackAndroid.exitApp();
-            return false;
+            return goBack(this.navigator);
         });
     }
 
@@ -65,14 +49,11 @@ class App extends React.Component {
                     Navigator.SceneConfigs.FloatFromRight
                     // Navigator.SceneConfigs.FadeAndroid
                 }
+                sceneStyle={{flex: 1, top: 40}}
                 navigationBar={
-                    // <Navigator.NavigationBar
-                    //     routeMapper={NavigatorBarMap}
-                    //     style={{height: 80}}
-                    // />
                     <Navigator.NavigationBar
-                        routeMapper={NavigatorBarMap}
-                        style={{backgroundColor: 'gray', flex: 1, height: 20}}
+                        routeMapper={NavigationBarMap}
+                        style={{backgroundColor: 'gray', marginTop: 0, height: 40, top: 0}}
                     />
                 }
             />
