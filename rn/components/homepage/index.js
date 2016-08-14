@@ -13,14 +13,10 @@ import List from './list';
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 1,
-        backgroundColor: 'red'
+        flex: 1
     },
     scroll: {
-    },
-    button: {
-        height: 20,
-        backgroundColor: 'red'
+
     }
 });
 

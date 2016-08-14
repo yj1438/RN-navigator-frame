@@ -6,12 +6,14 @@ import {
     Navigator,
     BackAndroid,
     Alert,
-    Text
+    Text,
+    Dimensions
 } from 'react-native';
 
 import Route from './base/route';
 import NavigationBarMap from './base/navigationBar';
 import goBack from './common/goBack';
+import SceneConfigs from './common/sceneConfigs';
 
 class App extends React.Component {
 
@@ -45,9 +47,8 @@ class App extends React.Component {
                 // initialRouteStack={Route}
                 renderScene={this._renderRoute.bind(this)}
                 configureScene={(route, routeStack) =>
-                    // Navigator.SceneConfigs.FloatFromBottom
-                    Navigator.SceneConfigs.FloatFromRight
-                    // Navigator.SceneConfigs.FadeAndroid
+                    SceneConfigs.PushFromRight
+                    // Navigator.SceneConfigs.PushFromRight
                 }
                 sceneStyle={{flex: 1, top: 40}}
                 navigationBar={

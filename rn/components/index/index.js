@@ -8,6 +8,8 @@ import {
     InteractionManager
 } from 'react-native';
 
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
+
 class Index extends React.Component {
 
     constructor (props, context) {
@@ -37,18 +39,33 @@ class Index extends React.Component {
     }
  
     render () {
+        let i = 0,
+            tabsList = [];
+
+        while (i < 15) {
+            const _key = i + '';
+            tabsList.push(
+                <View key={_key} tabLabel={"page" + _key}>
+                    <Text>this is page index</Text>
+                    <Text>{this.props.desc}</Text>
+                    <TouchableOpacity onPress={this._gotoDetail.bind(this)}>
+                        <Text>click this to detail page</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this._goBack.bind(this)}>
+                        <Text>click this to homepage</Text>
+                    </TouchableOpacity>
+                </View>
+            );
+            i++;
+        }
+
         return (
             !this.state.initAnimateing ? 
-            (<View>
-                <Text>this is page index</Text>
-                <Text>{this.props.desc}</Text>
-                <TouchableOpacity onPress={this._gotoDetail.bind(this)}>
-                    <Text>click this to detail page</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this._goBack.bind(this)}>
-                    <Text>click this to homepage</Text>
-                </TouchableOpacity>
-            </View>)
+            (<ScrollableTabView
+                renderTabBar={() => <ScrollableTabBar />}
+            >
+                {tabsList}
+            </ScrollableTabView>)
             :
             null
         );
