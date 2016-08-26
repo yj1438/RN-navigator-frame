@@ -31,6 +31,13 @@ class App extends React.Component {
         BackAndroid.removeEventListener('hardwareBackPress');
     }
 
+    /**
+     * 每 navigation 入栈时，就会调用此方法
+     * 加载配置好的路由指定页面
+     * @param {any} route
+     * @param {any} navigator
+     * @returns
+     */
     _renderRoute (route, navigator) {
         // this.route = route;
         this.navigator = navigator;
@@ -39,6 +46,7 @@ class App extends React.Component {
 
     render () {
         return (
+            //navigator 总控入口
             <Navigator
                 initialRoute={{
                     id: 'homepage',

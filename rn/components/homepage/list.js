@@ -27,7 +27,7 @@ class List extends Component {
 
     _gotoIndex () {
         this.props.navigator.push({
-            id: 'index',
+            id: 'list',
             params: {desc: 'this is indexpage from ' + this.props.num + '!'}
         });
     }

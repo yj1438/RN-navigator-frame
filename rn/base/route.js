@@ -1,19 +1,24 @@
 'use strict';
 import React from 'react';
 
-// 引入用到的所有模板
+/**
+ * 所有 component 整个框架内只有此处引入
+ * navigator 统一进行路由显示
+ * 将全部 component 的引用从老式的层级式改为统一入口的扁平式
+ */ 
 import Homepage from '../components/homepage';
-import Index from '../components/index';
+import List from '../components/list';
 import Detail from '../components/detail';
 import Error from '../components/error';
 
 /*
  * 路由配置项
  * 可配置默认参数 props: params ，配合 this.props 的限制可使代码更严谨
+ * component 默认和 key 、component 文件夹名称一致，首字母大写，component 文件夹内强制 index.js 为入口文件
  */
 const RouteMap = {
     'homepage': {index: 0, component: Homepage, params: {}},
-    'index': {index: 1, component: Index, params: {}},
+    'list': {index: 1, component: List, params: {}},
     'detail': {index: 2, component: Detail, params: {}}
 };
 

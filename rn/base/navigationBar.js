@@ -10,6 +10,7 @@ import {
     Alert
 } from 'react-native';
 
+// 返回操作，用于导航栏的返回
 import goBack from '../common/goBack';
 
 // navigationBar 的固定left\title\right 布局好诡异，只能用算的了，flex 各种问题
